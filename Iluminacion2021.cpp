@@ -440,7 +440,7 @@ int main()
 
 		//agregar su coche y ponerle material
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f + mainWindow.getmuevex(), 0.5f, -1.5f)); //mainWindow.getMuevex permite mover el objeto
+		model = glm::translate(model, glm::vec3(0.0f + mainWindow.getmuevex(), 0.5f, -1.5f + mainWindow.getmuevez())); //mainWindow.getMuevex permite mover el objeto en X y getMueveZ en el eje Z
 		modelAux = model; //Con esto ya estamos dandole jerarquia a la llanta
 		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
 		model = glm::rotate(model, -90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
