@@ -32,7 +32,7 @@ private:
 	GLfloat lastY;
 	GLfloat xChange;
 	GLfloat yChange;
-	GLfloat muevex;
+	GLfloat muevex; //Variable para muevex
 	GLfloat muevey; //Variable para mueveY
 	GLfloat muevez; //Variable para mueveZ
 	bool mouseFirstMoved;

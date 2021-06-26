@@ -13,7 +13,9 @@ Window::Window(GLint windowWidth, GLint windowHeight)
 {
 	width = windowWidth;
 	height = windowHeight;
-	muevex = 2.0f;
+	muevex = 2.0f; //Inicializando la variable para el desplazamiento en X
+	muevey = 2.0f;//Inicializando la variable para el desplazamiento en Y
+	muevez = 2.0f;//Inicializando la variable para el desplazamiento en Z
 	for (size_t i = 0; i < 1024; i++)
 	{
 		keys[i] = 0;
@@ -104,6 +106,7 @@ void Window::ManejaTeclado(GLFWwindow* window, int key, int code, int action, in
 	{
 		glfwSetWindowShouldClose(window, GL_TRUE);
 	}
+	/******** DEFINIENDO MOVIMIENTO EN EL EJE X ***********/
 	if (key == GLFW_KEY_Y)
 	{//Cuando se presiona Y incrementa en x
 		theWindow-> muevex += 1.0;
@@ -113,6 +116,24 @@ void Window::ManejaTeclado(GLFWwindow* window, int key, int code, int action, in
 		theWindow-> muevex -= 1.0;
 	}
 
+	/******** DEFINIENDO MOVIMIENTO EN EL EJE Y ***********/
+	if (key == GLFW_KEY_H)
+	{//Cuando se presiona Y incrementa en x
+		theWindow->muevey += 1.0;
+	}
+	if (key == GLFW_KEY_J)
+	{//Cuando se presiona X decrementa en x
+		theWindow->muevey -= 1.0;
+	}
+	/******** DEFINIENDO MOVIMIENTO EN EL EJE Z ***********/
+	if (key == GLFW_KEY_N)
+	{//Cuando se presiona Y incrementa en x
+		theWindow->muevez += 1.0;
+	}
+	if (key == GLFW_KEY_M)
+	{//Cuando se presiona X decrementa en x
+		theWindow->muevez -= 1.0;
+	}
 
 
 	if (key >= 0 && key < 1024)
