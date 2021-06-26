@@ -490,7 +490,7 @@ int main()
 		desplazamiento = glm:: vec3 (mainWindow.getmuevex() , 0.0f, 0.0f);		//agregar incremento en X con teclado
 		model = glm::mat4(1.0);
 		model = glm:: translate(model, posblackhawk + desplazamiento);
-		model = glm::translate(model, glm::vec3(-20.0f + mainWindow.getmuevex(), 8.0, -1.0));
+		model = glm::translate(model, glm::vec3(-20.0f + mainWindow.getmuevex(), 8.0 + mainWindow.getmuevey(), -1.0)); //Moviendo el helicoptero en los X,Y
 		model = glm::scale(model, glm::vec3(0.8f, 0.8f, 0.8f));
 		model = glm::rotate(model, -90 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
