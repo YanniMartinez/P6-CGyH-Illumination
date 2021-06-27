@@ -304,7 +304,7 @@ int main()
 	Blackhawk_M = Model();
 	Blackhawk_M.LoadModel("Models/uh60.obj");
 	Camino_M = Model();
-	Camino_M.LoadModel("Models/railroad track.obj");
+	Camino_M.LoadModel("Models/railroad track2.obj");
 
 	Dado_M = Model();
 	Dado_M.LoadModel("Models/dadoanimales.obj");
