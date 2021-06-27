@@ -357,15 +357,6 @@ int main()
 		1.0f, 0.0f, 0.0f,
 		15.0f);
 	spotLightCount++;
-	
-	//luz de helicóptero
-	spotLights[2] = SpotLight(1.0f, 0.0f, 0.0f, //Aqui va el color
-		1.0f, 2.0f,
-		-30.0f, 14.0f, -1.0f, //Vector de posición, aproximadamente donde da origen la luz, este lo coloqué cerca del faro derecho
-		0.0f, -1.0f, 0.0f, //Vector de dirección, en este caso un vector unitario que apunta a donde ve el auto
-		1.0f, 0.0f, 0.0f,
-		15.0f); //Tamaño del diametro
-	spotLightCount++;
 
 	//luz de faro
 	spotLights[1] = SpotLight(0.8f, 0.0f, 0.5f, //Aqui va el color
@@ -375,6 +366,15 @@ int main()
 		1.0f, 0.0f, 0.0f, 
 		15.0f); //Tamaño del diametro
 	spotLightCount++; 
+
+	//luz de helicóptero
+	spotLights[2] = SpotLight(1.0f, 0.0f, 0.0f, //Aqui va el color
+		1.0f, 2.0f,
+		-30.0f, 14.0f, -1.0f, //Vector de posición, aproximadamente donde da origen la luz, este lo coloqué cerca del faro derecho
+		0.0f, -1.0f, 0.0f, //Vector de dirección, en este caso un vector unitario que apunta a donde ve el auto
+		1.0f, 0.0f, 0.0f,
+		15.0f); //Tamaño del diametro
+	spotLightCount++;
 
 	GLuint uniformProjection = 0, uniformModel = 0, uniformView = 0, uniformEyePosition = 0,
 		uniformSpecularIntensity = 0, uniformShininess = 0;
@@ -484,6 +484,14 @@ int main()
 		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Llanta_M.RenderModel();
+
+		//*************************** FARO DEL CARRO ***********************
+		//Posición aproximada para poner una luz en medio de los faros -1.5f, -1.5f, -2.5f
+		glm::vec3 carr(-1.5f + mainWindow.getmuevex(),
+			-1.5f, //Aquí no dupliqué la velocidad por que la velocidad de subida es más lenta que de forma horizontal
+			-2.5f + mainWindow.getmuevez()); //No olvidar aumentar agregar si se mueve a Z
+		glm::vec3 unitaryX(-1.0f, 0.0f, 0.0f); //Un unitario que tenga dirección enfrente
+		spotLights[1].SetFlash(carr, unitaryX);
 		
 		//Helicoptero
 		desplazamiento = glm:: vec3 (mainWindow.getmuevex() , 0.0f, 0.0f);		//agregar incremento en X con teclado
@@ -507,7 +515,7 @@ int main()
 		//				posblackhawk.y + mainWindow.getmuevey(), 
 		//			posblackhawk.z);
 
-		//A diferentes velocidades
+		//A diferentes velocidades horizontales
 		glm::vec3 helicopter(posblackhawk.x + mainWindow.getmuevex()+ posblackhawk.x + mainWindow.getmuevex(),
 							posblackhawk.y + mainWindow.getmuevey(), //Aquí no dupliqué la velocidad por que la velocidad de subida es más lenta que de forma horizontal
 							posblackhawk.z);
