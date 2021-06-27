@@ -1,7 +1,7 @@
 /*
 Semestre 2021-2
-Práctica : Iluminación
-Cambios en el shader, en lugar de enviar la textura en el shader de fragmentos, enviaremos el finalcolor
+Práctica 6: Iluminación
+Martínez Martínez Yanni
 */
 //para cargar imagen
 #define STB_IMAGE_IMPLEMENTATION
