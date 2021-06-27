@@ -486,9 +486,9 @@ int main()
 		Llanta_M.RenderModel();
 		
 		//Helicoptero
-		//desplazamiento = glm:: vec3 (mainWindow.getmuevex() , 0.0f, 0.0f);		//agregar incremento en X con teclado
+		desplazamiento = glm:: vec3 (mainWindow.getmuevex() , 0.0f, 0.0f);		//agregar incremento en X con teclado
 		model = glm::mat4(1.0);
-		//model = glm:: translate(model, posblackhawk + desplazamiento);
+		model = glm:: translate(model, posblackhawk + desplazamiento);
 		model = glm::translate(model, glm::vec3(-20.0f + mainWindow.getmuevex(), 8.0 + mainWindow.getmuevey(), -1.0)); //Moviendo el helicoptero en los X,Y
 		model = glm::scale(model, glm::vec3(0.8f, 0.8f, 0.8f));
 		model = glm::rotate(model, -90 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
@@ -501,8 +501,16 @@ int main()
 
 		//********	LUZ DEL HELICOPTERO	***************
 		//Defino un vector con posiciones del helicoptero
-		//Posición aproximada del helicoptero -30.0f, 14.0f, -1.0f
-		glm::vec3 helicopter(posblackhawk.x + mainWindow.getmuevex(), posblackhawk.y + mainWindow.getmuevey(), posblackhawk.z);
+		//A la misma velocidad que el Vehiculo
+		
+		//glm::vec3 helicopter(posblackhawk.x + mainWindow.getmuevex(), 
+		//				posblackhawk.y + mainWindow.getmuevey(), 
+		//			posblackhawk.z);
+
+		//A diferentes velocidades
+		glm::vec3 helicopter(posblackhawk.x + mainWindow.getmuevex()+ posblackhawk.x + mainWindow.getmuevex(),
+							posblackhawk.y + mainWindow.getmuevey(), //Aquí no dupliqué la velocidad por que la velocidad de subida es más lenta que de forma horizontal
+							posblackhawk.z);
 		glm::vec3 unitaryY(0.0f, -1.0f, 0.0f); //Un unitario que tenga dirección hacia el suelo.
 		spotLights[2].SetFlash(helicopter, unitaryY);
 
