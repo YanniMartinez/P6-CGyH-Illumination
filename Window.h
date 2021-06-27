@@ -13,6 +13,7 @@ public:
 	GLfloat getBufferHeight() { return bufferHeight; }
 	GLfloat getXChange();
 	GLfloat getYChange();
+	GLfloat getZChange();
 	GLfloat getmuevex() { return muevex; }
 	GLfloat getmuevey() { return muevey; } //Método GET para mueve Y
 	GLfloat getmuevez() { return muevez; }//Método GET para mueve Z

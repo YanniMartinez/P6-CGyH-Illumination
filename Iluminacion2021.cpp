@@ -361,7 +361,7 @@ int main()
 	//luz de helicóptero
 	spotLights[2] = SpotLight(1.0f, 0.0f, 0.0f, //Aqui va el color
 		1.0f, 2.0f,
-		-30.0f, 14.0f, -1.0, //Vector de posición, aproximadamente donde da origen la luz, este lo coloqué cerca del faro derecho
+		-30.0f, 14.0f, -1.0f, //Vector de posición, aproximadamente donde da origen la luz, este lo coloqué cerca del faro derecho
 		0.0f, -1.0f, 0.0f, //Vector de dirección, en este caso un vector unitario que apunta a donde ve el auto
 		1.0f, 0.0f, 0.0f,
 		15.0f); //Tamaño del diametro
@@ -422,6 +422,12 @@ int main()
 		shaderList[0].SetPointLights(pointLights, pointLightCount);
 		shaderList[0].SetSpotLights(spotLights, spotLightCount);
 
+		//********LUZ DEL HELICOPTERO
+		//Defino un vector con posiciones del helicoptero
+		//Posición aproximada del helicoptero -30.0f, 14.0f, -1.0f
+		glm::vec3 helicopter(-40.0f + mainWindow.getmuevex(), 14.0f + mainWindow.getmuevey(), -1.0f );
+		glm::vec3 unitaryY(0.0f,-1.0f,0.0f); //Un unitario que tenga dirección hacia el suelo.
+		spotLights[2].SetFlash(helicopter, unitaryY);
 
 		glm::mat4 model(1.0);
 		glm::mat4 modelAux(1.0); //Sirve para poder darle jerarquia
@@ -486,7 +492,7 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Llanta_M.RenderModel();
 		
-
+		//Helicoptero
 		desplazamiento = glm:: vec3 (mainWindow.getmuevex() , 0.0f, 0.0f);		//agregar incremento en X con teclado
 		model = glm::mat4(1.0);
 		model = glm:: translate(model, posblackhawk + desplazamiento);
